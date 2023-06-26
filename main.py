@@ -1,8 +1,8 @@
 import random
 import time
-import tkinter as tk
+from tkinter import *
 
-window = tk.Tk()
+window = Tk()
 
 screen_width = 400
 screen_height = 400
@@ -12,13 +12,14 @@ snake_blocks = []
 d_row = 1
 d_col = 0
 
-window.geometry(f"{screen_width}x{screen_height}")
+#window.geometry(f"{screen_width}x{screen_height}")
 
 canvas = tk.Canvas(window, width=screen_width, height=screen_height, bg='black')
 canvas.pack()
+canvas.update()
 #point.create_rectangle(20, 20, 40, 40, fill='white')
 #point.create_rectangle(22, 22, 38, 38, fill='white', outline='black')
-
+window.title("SnakeAI")
 
 def draw_block(color: str, row: int, column: int) -> None:
     canvas.create_rectangle((row-1)*point_width, (column-1)*point_height, row*point_width, column*point_height, fill=color)
@@ -61,9 +62,8 @@ while True:
     for block in snake_blocks:
         draw_block("white", block.x, block.y)
 
-    time.sleep(0.5)
+    time.sleep(0.005)
 
-window.title("SnakeAI")
 window.mainloop()
 
 
